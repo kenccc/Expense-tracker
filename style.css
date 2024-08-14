@@ -1,0 +1,155 @@
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background-color 0.3s ease-in-out;
+  flex-direction: column; 
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 10px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 28px;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 10px;
+  animation: slideIn 0.8s ease-out;
+}
+
+
+form input[type='text'],
+form input[type='number'] {
+  width: calc(50% - 12px);
+  padding: 12px;
+  margin: 10px 6px;
+  border: 2px solid #2980b9;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+form input[type='text']:focus,
+form input[type='number']:focus {
+  border-color: #1abc9c;
+}
+
+#addbtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#addbtn:hover {
+  background-color: #1abc9c;
+}
+
+
+#all_expenses {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#all_expenses tr {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+#all_expenses tr:hover {
+  background-color: #f1f1f1;
+}
+
+#all_expenses td {
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+#all_expenses button {
+  padding: 6px 12px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#all_expenses button:hover {
+  background-color: #c0392b;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .container {
+    max-width: 90%;
+    margin: 10px;
+  }
+
+  form input[type='text'],
+  form input[type='number'] {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  #addbtn {
+    margin-top: 10px;
+  }
+}

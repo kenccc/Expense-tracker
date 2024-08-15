@@ -22,7 +22,8 @@ body {
   border-radius: 10px;
   animation: fadeIn 0.8s ease-in-out;
   max-height: 80vh; 
-  overflow-y: auto; 
+  overflow-y: scroll; 
+  
 }
 
 

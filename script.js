@@ -1,6 +1,5 @@
 let totalAmount;
 const expensetotal = document.getElementById('total-amount');
-
 function addExpense(){
   const expenseName = document.getElementById('input');
   const expenseAmount = document.getElementById('amount');
@@ -36,13 +35,40 @@ function addExpense(){
   
 }
 function updateTotal() {
-  totalAmount = 0;
-  const rows = document.querySelectorAll('#all_expenses tr');
-  rows.forEach(row => {
-    const amountCell = row.querySelector('td:nth-child(2)');
-    totalAmount += parseFloat(amountCell.innerText);
-  });
-  expensetotal.innerText = "Total: "+totalAmount.toFixed(2);
+  const budget_limit = document.getElementById('budget-limit-input');
+  if (budget_limit.value === ''){
+    expensetotal.style.color = 'black';
+    totalAmount = 0;
+    const rows = document.querySelectorAll('#all_expenses tr');
+    rows.forEach(row => {
+      const amountCell = row.querySelector('td:nth-child(2)');
+      totalAmount += parseFloat(amountCell.innerText);
+    });
+    expensetotal.innerText = "Total: "+totalAmount.toFixed(2);
+  }
+  else{
+    totalAmount = 0;
+    const rows = document.querySelectorAll('#all_expenses tr');
+    rows.forEach(row => {
+      const amountCell = row.querySelector('td:nth-child(2)');
+      totalAmount += parseFloat(amountCell.innerText);
+    });
+    total = totalAmount.toFixed(2);
+    if (totalAmount > budget_limit.value){
+      expensetotal.innerText = "Total: "+totalAmount.toFixed(2)+" (Over budget by "+(totalAmount-budget_limit.value).toFixed(2)+")";
+      expensetotal.style.color = 'red';
+    }
+    else if (totalAmount > budget_limit.value-100){
+      expensetotal.innerText = "Total: "+totalAmount.toFixed(2)+" (You are almost over budget)";
+      expensetotal.style.color = 'orange';
+    }
+    else {
+      expensetotal.innerText = "Total: "+totalAmount.toFixed(2);
+      expensetotal.style.color = 'green';
+    }
+  }
+  
+  
 }
 
 updateTotal();
@@ -53,6 +79,7 @@ function deleteExpense(button){
   updateTotal();
 }
 
+
 function saveExpenses() {
   const expenses = [];
   const rows = document.querySelectorAll('#all_expenses tr');
@@ -61,7 +88,7 @@ function saveExpenses() {
     const amount = row.querySelector('td:nth-child(2)').innerText;
     expenses.push({ name, amount });
   });
-  document.cookie = `expenses=${encodeURIComponent(JSON.stringify(expenses))}; path=/; max-age=31536000;`; // Expires in 1 year
+  document.cookie = `expenses=${encodeURIComponent(JSON.stringify(expenses))}; path=/; max-age=31536000;`;
 }
 
 function loadExpenses() {
@@ -94,5 +121,14 @@ function loadExpenses() {
   updateTotal();
 }
 
+function clearExpenses(){
+  const expenseTable = document.getElementById('all_expenses');
+  expenseTable.innerHTML = '';
+  saveExpenses();
+  updateTotal();
+}
+
 window.addEventListener('load', loadExpenses);
 window.addEventListener('beforeunload', saveExpenses);
+
+

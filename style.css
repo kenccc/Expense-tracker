@@ -50,6 +50,27 @@ form input[type='number']:focus {
   border-color: #1abc9c;
 }
 
+#budget-limit-input{
+  margin: 10px 6px;
+  border: 2px solid #b82828;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+#clearbtn{
+  width: 25%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #ea5d5d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#clearbtn:hover{
+  background-color: #fe3939;
+}
 #addbtn {
   width: 100%;
   padding: 12px;
@@ -127,6 +148,22 @@ form input[type='number']:focus {
   }
 }
 
+.footer {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px;
+  color: #555;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+.footer:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #007bff;
+}
 
 @media (max-width: 600px) {
   body {
@@ -151,5 +188,9 @@ form input[type='number']:focus {
 
   #addbtn {
     margin-top: 10px;
+  }
+  .footer {
+    font-size: 10px;
+    padding: 3px 7px;
   }
 }

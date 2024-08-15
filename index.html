@@ -11,6 +11,9 @@
 
 <body>
   <div class='container'>
+    <div class='budget_limit-container' id='budget-limit'>
+      <input type='number' id='budget-limit-input' placeholder='Set your budget limit'>
+    </div>
     <div class='adding-container' id='adding'>
       <form id='expense-form'>
         <input type='text' id='input' placeholder='Name of expense'>
@@ -21,10 +24,15 @@
     <div class='all_expenses-container' id='expenses-container''>
       <table id='all_expenses'>
       </table>
+      <input type='button' id='clearbtn' value='Clear expenses' onclick="clearExpenses()">
       <h3 class='total' id='total-amount'></h3>
     </div>
+    <footer>
+      Made by Kent Vu
+    </footer>
   </div>
   <script src="script.js"></script>
+  
 </body>
 
 </html>

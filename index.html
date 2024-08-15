@@ -18,21 +18,27 @@
       <form id='expense-form'>
         <input type='text' id='input' placeholder='Name of expense'>
         <input type='number' id='amount' placeholder='Amount'>
-        <input type='button' id='addbtn' value='Add' onclick="addExpense()"">
+        <input type='button' id='addbtn' value='Add' onclick="addExpense()">
       </form>
     </div>
-    <div class='all_expenses-container' id='expenses-container''>
+    <div class='all_expenses-container' id='expenses-container'>
       <table id='all_expenses'>
       </table>
       <input type='button' id='clearbtn' value='Clear expenses' onclick="clearExpenses()">
       <h3 class='total' id='total-amount'></h3>
     </div>
+    <div class='exports-container' id='export-container'>
+      <input type='button' id='csvexport' value='Export to CSV' onclick="exportToCSV()">
+      <input type='button' id='excelexport' value='Export to XLSX(Excel)' onclick="exportToExcel()">
+    </div>
     <footer>
       Made by Kent Vu
     </footer>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script src="script.js"></script>
   
+
 </body>
 
 </html>

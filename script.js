@@ -120,6 +120,53 @@ function loadExpenses() {
   }
   updateTotal();
 }
+function exportToCSV() {
+  const expenseTable = document.getElementById('all_expenses');
+  const rows = expenseTable.querySelectorAll('tr');
+  let csvContent = 'data:text/csv;charset=utf-8,';
+
+  csvContent += "Name,Price\r\n";
+
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    const rowArray = Array.from(cells)
+      .slice(0, -1) 
+      .map(cell => cell.innerText);
+    csvContent += rowArray.join(',') + '\r\n';
+  });
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', 'expenses.csv');
+  document.body.appendChild(link);
+  link.click();
+}
+
+
+function exportToExcel() {
+  const expenseTable = document.getElementById('all_expenses');
+  const rows = expenseTable.querySelectorAll('tr');
+  const data = [];
+
+  data.push(["Name", "Price"]);
+
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    const rowArray = Array.from(cells)
+      .slice(0, -1) 
+      .map(cell => cell.innerText);
+    data.push(rowArray);
+  });
+
+  const worksheet = XLSX.utils.aoa_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Expenses");
+
+  XLSX.writeFile(workbook, 'expenses.xlsx');
+}
+
+
 
 function clearExpenses(){
   const expenseTable = document.getElementById('all_expenses');

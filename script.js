@@ -80,6 +80,7 @@ function deleteExpense(button){
 }
 
 
+
 function saveExpenses() {
   const expenses = [];
   const rows = document.querySelectorAll('#all_expenses tr');
